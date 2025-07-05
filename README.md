@@ -1,6 +1,6 @@
 # 🎬 My Movie Recommendation App
 
-Live Demo 👉 [mymovierecommendation.netlify.app](https://mymovierecommendation.netlify.app)
+Live Demo 👉 [mymovierecommendation.netlify.app](https://mymovierecomendation.netlify.app/)
 
 A sleek and responsive movie discovery web app that helps users find trending, popular, and search-based movie recommendations with ease. Powered by [TMDB API](https://developer.themoviedb.org/) and built with modern web technologies.
 
