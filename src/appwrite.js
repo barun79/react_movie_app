@@ -11,30 +11,46 @@ const client = new Client()
 
 const database = new Databases(client);
 
-export const updateSearchCount = async (searchTerm, movie) =>{
+export const updateSearchCount = async (searchTerm, movie) => {
+  try {
+    console.log("Updating search count for:", searchTerm, movie.title);
     
-    try {
-        const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
-            Query.equal('searchTerm', searchTerm),
-        ])
-        if (result.documents.length > 0){
-            const doc = result.documents[0];
+    const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
+      Query.equal('searchTerm', searchTerm),
+    ]);
 
-            await database.updateDocument(DATABASE_ID,COLLECTION_ID, doc.$id , {
-                count: doc.count + 1,
-            })
-        }else{
-            await database.createDocument(DATABASE_ID, COLLECTION_ID,ID.unique(),{
-                searchTerm,
-                count: 1,
-                movie_id: movie.id,
-                poster_url:`https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-            } )
-        }
-    } catch (error) {
-        console.error(error);
+    console.log("Found docs:", result.documents.length);
+
+    if (result.documents.length > 0) {
+      const doc = result.documents[0];
+      console.log("Updating existing doc:", doc.$id);
+
+      await database.updateDocument(DATABASE_ID, COLLECTION_ID, doc.$id, {
+        count: doc.count + 1,
+      });
+    } else {
+      console.log("Creating new document");
+      await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
+        searchTerm,
+        count: 1,
+        movie_id: movie.id,
+        poster_url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+        backdrop_path: `https://image.tmdb.org/t/p/original${movie.backdrop_path}`,
+        title: movie.title,
+        overview: movie.overview,
+        release_date: movie.release_date,
+        original_language: movie.original_language,
+        vote_average: movie.vote_average,
+        vote_count: movie.vote_count,
+      });
     }
-}
+
+    console.log("Document successfully created/updated!");
+  } catch (error) {
+    console.error("Appwrite error:", error.message || error);
+  }
+};
+
 
 export const getTrendingMovies = async() => {
     try {   
