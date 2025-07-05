@@ -1,7 +1,3 @@
-// eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjY2MDIxZDlmNGQyYmNmNTkyYWE4ZTUzZTEwOWNkNyIsIm5iZiI6MTc1MTU4OTU4My4xODQsInN1YiI6IjY4NjcyMmNmYzljNTlkYmVjNDdhYjc3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.If93m31sp0L-i1JPYeUEVlK-huxXkQYzpuvm192euq8
-// 3b66021d9f4d2bcf592aa8e53e109cd7
-// eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjY2MDIxZDlmNGQyYmNmNTkyYWE4ZTUzZTEwOWNkNyIsIm5iZiI6MTc1MTU4OTU4My4xODQsInN1YiI6IjY4NjcyMmNmYzljNTlkYmVjNDdhYjc3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.If93m31sp0L-i1JPYeUEVlK-huxXkQYzpuvm192euq8
-
 import {  useEffect , useState } from "react"
 import Search from "./components/Search"
 import Spinner from "./components/Spinner";
